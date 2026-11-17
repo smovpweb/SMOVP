@@ -1305,6 +1305,140 @@ html[lang="ml"] .vk{font-family:var(--ml); letter-spacing:0; text-transform:none
 /* the language switch crossfades the page */
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.42s; animation-timing-function:cubic-bezier(.4,0,.2,1)}
 
+/* ==========================================================================
+   21. PHONES AND SMALL TABLETS  (the small-screen layout, in one place)
+   ========================================================================== */
+/* nothing may widen the page sideways: the gallery strip slides in from the right, so its band clips it */
+.gallery{overflow:hidden}
+@supports not (overflow:clip){ body{overflow-x:hidden} .tl-sec{overflow-x:hidden} }
+
+/* gallery: a quiet hint on touch screens, arrows on the right */
+.gs-foot{align-items:center; gap:20px}
+.gs-nav{margin-left:auto}
+.gs-hint{font:500 .64rem/1.4 var(--mono); letter-spacing:.14em; text-transform:uppercase; color:var(--muted)}
+html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform:none; font-size:.84rem}
+.fine .gs-hint{display:none}
+
+@media (max-width:760px){
+  /* top bar: a short, calm slide; the year bar on History moves with it */
+  .nav{transition:transform .42s cubic-bezier(.2,.7,.2,1), color .4s var(--out)}
+  .nav.hide{transform:translateY(-100%)}
+  .hj-in{transition:transform .42s cubic-bezier(.2,.7,.2,1)}
+
+  /* hero: the affiliation becomes one small glass badge above the name */
+  .hs-church{order:-1; align-self:flex-start; width:auto; max-width:100%; margin:0 0 4px; padding:5px 14px 5px 5px; gap:10px; border:1px solid rgba(255,255,255,.16); border-radius:999px; background:rgba(255,255,255,.08); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
+  .hs-emblem{width:30px; filter:none}
+  .hs-church > div{display:grid; gap:2px; min-width:0}
+  .side-of{display:none}
+  .side-church{margin:0; font:500 .74rem/1.2 var(--sans); letter-spacing:0; color:#fff}
+  .side-dio{margin:0; font-size:.68rem; line-height:1.2; color:var(--gold-3)}
+  html[lang="ml"] .side-church{font-family:var(--ml); font-size:.74rem; line-height:1.35}
+  .hs-card{gap:18px}
+  /* Malayalam: the menu pill keeps only its icon so the bar fits */
+  html[lang="ml"] .mb-t{display:none}
+  html[lang="ml"] .menu-btn{width:38px; padding:0}
+  html[lang="ml"] .menu-btn i{left:11px}
+
+  /* icons: Christ alone and large, the four feasts in one quiet row beneath Him */
+  .lord{padding:68px 0 64px}
+  .lord .wrap{padding:0 var(--g)}
+  .lord-head{padding:0; margin-bottom:34px}
+  .lord-verse{font-size:clamp(1.8rem,8vw,2.3rem); line-height:1.1}
+  .stage{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); align-items:start; gap:0 10px; overflow:visible; padding:0; perspective:none; scroll-snap-type:none}
+  .ikon,.ikon.c{flex:none; grid-row:auto; grid-template-rows:auto auto; gap:10px; transform:none !important; opacity:1 !important; will-change:auto; z-index:auto}
+  .ikon.c{grid-column:1 / -1; order:-1; justify-self:center; width:min(62vw,250px); gap:20px; margin-bottom:40px; z-index:1}
+  .ikon.c::before{width:160%; top:38%}
+  .ik-cap{opacity:1; gap:6px}
+  .lord .ikon.c .ik-cap h3{font-size:clamp(1.8rem,8vw,2.1rem)}
+  .lord .ikon.c .ik-cap p{font-size:1.05rem}
+  .lord .ikon:not(.c) .ik-cap h3{font:400 .8rem/1.25 var(--serif); letter-spacing:0; color:var(--ink-2)}
+  .ikon{grid-template-columns:minmax(0,1fr)}
+  .ik-cap{min-width:0; max-width:100%}
+  .lord .ikon:not(.c) .ik-cap h3{overflow-wrap:anywhere}
+  html[lang="ml"] .lord .ikon:not(.c) .ik-cap h3{font-family:var(--ml); font-size:.62rem; line-height:1.4}
+  html[lang="ml"] .lord .ikon.c .ik-cap h3{font-size:1.45rem}
+  .ik-frame img{border-radius:4px; filter:drop-shadow(0 12px 14px rgba(60,40,10,.22))}
+  .ikon.c .ik-frame img{filter:drop-shadow(0 26px 30px rgba(90,60,10,.3))}
+  .lord-foot{margin-top:44px; padding:0}
+  .lord-ref{font-size:1rem; gap:14px; margin-top:20px}
+
+  /* patron saints: the three medals side by side, the Mother of God a little larger in the middle */
+  .patron-head{margin-bottom:34px}
+  .trio{grid-template-columns:1fr 1.3fr 1fr; gap:12px; align-items:end}
+  .saint.main{grid-column:auto; order:0}
+  .medal,.saint.main .medal{width:100%}
+  .medal img{filter:drop-shadow(0 12px 16px rgba(80,55,10,.22))}
+  .saint figcaption{margin-top:14px; gap:6px}
+  .saint-name{font-size:1.05rem; line-height:1.1}
+  .saint.main .saint-name{font-size:1.35rem}
+  .saint-tag{font-size:.5rem; letter-spacing:.1em; line-height:1.4; max-width:13ch}
+  html[lang="ml"] .saint-name{font-size:.92rem} html[lang="ml"] .saint.main .saint-name{font-size:1.08rem}
+  html[lang="ml"] .saint-tag{font-size:.7rem}
+
+  /* gallery: taller photos, the hint below instead of arrows */
+  .gal-head{margin-bottom:26px}
+  .gs-foot{display:flex; justify-content:flex-start; margin-top:18px}
+  .gs-nav{display:none}
+
+  /* visit: times first, then contact, directions and the map; the socials close the section */
+  .visit{gap:0}
+  .visit > div:first-child{display:contents}
+  #visit-title{order:1}
+  .addr{order:2; margin-top:12px; font-size:1.2rem; color:var(--muted)}
+  .vinfo{order:3; margin-top:26px}
+  .vinfo > .vcard:not(.vcontact){order:-1}
+  .visit .acts{order:4; display:grid; grid-template-columns:1fr; margin-top:14px}
+  .visit .acts .btn{width:100%; justify-content:center}
+  .map{order:5; margin-top:14px; min-height:280px; border-radius:20px}
+  .socials{order:6; margin-top:26px}
+  .soc-label{margin-right:auto}
+  .soc{width:44px; height:44px}
+  .vv{font-size:.97rem}
+  .vv-addr{font-size:.95rem}
+
+  /* footer: smaller, tidier link rows */
+  .f-links{gap:12px 22px; padding:34px 0 24px; font-size:.86rem}
+}
+@media (max-width:700px){
+  .gs-item{--h:min(76vw,330px); width:min(calc(var(--h) * var(--ar)), 80vw); border-radius:12px}
+}
+/* small phones: the top bar keeps everything inside the screen */
+@media (max-width:380px){
+  .nav-in{gap:10px}
+  .brand img{height:30px}
+  .nav-cta{gap:6px}
+  .nav .lang button{min-width:34px; padding:0 8px}
+  .menu-btn{padding:0 12px 0 34px} .menu-btn i{left:12px}
+}
+/* organisations: a calm 3 × 2 grid of logos, no sideways strip */
+@media (max-width:640px){
+  .orgs{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); overflow:visible; margin:0; padding:0; scroll-snap-type:none}
+  .org{flex:none; gap:12px; padding:24px 6px 22px}
+  .org:nth-child(3n+1)::before{display:none}
+  .org:nth-child(n+4){border-top:1px solid var(--line)}
+  .org-logo{height:60px}
+  .org-logo img{max-width:min(100%,74px)}
+  .org-name{font-size:.8rem; line-height:1.28; max-width:12ch}
+  .org-ab{font-size:.92em; color:var(--muted)}
+}
+
+/* history on phones: the year bar is a flush strip under the top bar, cards are lighter */
+@media (max-width:860px){
+  .hh-lead{font-size:.97rem}
+  .hj{top:0; padding:0; margin-top:24px}
+  .hj-in{border-radius:0; border-width:1px 0; background:var(--paper); box-shadow:0 12px 26px -22px rgba(16,20,29,.55)}
+  .hj-now{height:54px; padding:0 var(--g)}
+  .hj-row{padding:2px var(--g) 14px}
+  .tl-sec{padding-top:28px}
+  .tl-no{display:none}
+  .tl-top{margin-bottom:6px}
+  .tl-yr{font-size:2.15rem}
+  .tl-card{padding:20px 18px}
+  .tl-title{font-size:1.32rem; margin-top:10px}
+  .tl-text{margin-top:10px}
+  .tl-item{padding:12px 0}
+  .tl-node{top:44px}
+}
 @media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; scroll-behavior:auto !important} }
 </style>
 </head>
@@ -1464,7 +1598,6 @@ html[lang="ml"] .vk{font-family:var(--ml); letter-spacing:0; text-transform:none
         <button class="ikon lb-item" type="button" style="--k:1; --ka:1"><span class="ik-frame"><img src="images/icon-ascension.webp" decoding="async" alt="Icon of the Ascension, with the Mother of God and the apostles" width="560" height="840"></span><span class="ik-cap"><h3 data-i18n="int.asc">The Ascension</h3></span></button>
         <button class="ikon lb-item" type="button" style="--k:2; --ka:2"><span class="ik-frame"><img src="images/icon-pentecost.webp" decoding="async" alt="Icon of Pentecost, the Holy Spirit descending on the apostles" width="560" height="840" loading="lazy"></span><span class="ik-cap"><h3 data-i18n="int.pen">Pentecost</h3></span></button>
       </div>
-      <div class="ik-dots" id="ikDots" aria-hidden="true"></div>
       <div class="lord-foot">
         <p class="h2 lines lord-verse"><span class="ln"><span style="--i:0" data-i18n="lord.v3">He is <em>the head</em> of the body,</span></span><span class="ln"><span style="--i:1" data-i18n="lord.v4">the church.</span></span></p>
         <p class="lord-ref rv" style="--d:.3s"><span data-i18n="lord.ref">Colossians 1:17–18</span></p>
@@ -1576,7 +1709,7 @@ html[lang="ml"] .vk{font-family:var(--ml); letter-spacing:0; text-transform:none
         <button class="gs-item lb-item" type="button" style="--ar:0.5630"><img src="images/gallery-113-s.jpg" data-full="images/gallery-113.jpg" decoding="async" alt="The tall bronze nilavilakku before the church window" loading="lazy" width="1126" height="2000"></button>
     </div>
     <div class="wrap">
-      <div class="gs-foot rv"><div class="gs-nav"><button class="gs-btn" id="gsPrev" type="button" aria-label="Previous photos"><svg><use href="#arr"/></svg></button><button class="gs-btn" id="gsNext" type="button" aria-label="Next photos"><svg><use href="#arr"/></svg></button></div></div>
+      <div class="gs-foot rv"><p class="gs-hint" data-i18n="gal.hint">Swipe to explore · tap a photo to view</p><div class="gs-nav"><button class="gs-btn" id="gsPrev" type="button" aria-label="Previous photos"><svg><use href="#arr"/></svg></button><button class="gs-btn" id="gsNext" type="button" aria-label="Next photos"><svg><use href="#arr"/></svg></button></div></div>
       </div>
     </div>
   </section>
@@ -1901,7 +2034,7 @@ var ML = {
 
   'int.sanct': 'മദ്ബഹ', 'int.sanct.s': 'വിശുദ്ധ കുർബാന അർപ്പിക്കുന്ന ഇടം',
 
-  'gal.kicker': 'ഗാലറി',
+  'gal.kicker': 'ഗാലറി', 'gal.hint': 'വശത്തേക്ക് നീക്കുക · ചിത്രം തുറക്കാൻ തൊടുക',
   'gal.8': 'നിലവിളക്ക്', 'gal.8.s': 'പ്രാർത്ഥനയുടെ ദീപം',
   'gal.1': 'മണിമാളിക', 'gal.1.s': 'ഇടവകയെ പ്രാർത്ഥനയ്ക്കു വിളിക്കുന്നു',
   'gal.2': 'താഴികക്കുടം', 'gal.2.s': 'കുരിശിനാൽ മകുടം ചാർത്തിയത്',
@@ -2184,8 +2317,7 @@ var ML = {
   /* ---------- 7. buttons: fill from the pointer, magnetic pull, touch ripple ---------- */
 
   /* ---------- 9. icons: fan-out on scroll (desktop), 3D tilt, swipe carousel (phones) ---------- */
-  var lord = $('#lord'), stage = $('#stage'), ikons = $$('.ikon', stage), dotsEl = $('#ikDots'), dots = [];
-  ikons.forEach(function () { dots.push(dotsEl.appendChild(mk('i'))); });
+  var lord = $('#lord'), stage = $('#stage'), ikons = $$('.ikon', stage);
   if (fine && motion) ikons.forEach(function (ik) {
     if (ik.classList.contains('c')) return;
     var fr = $('.ik-frame', ik);
@@ -2196,33 +2328,6 @@ var ML = {
     });
     ik.addEventListener('pointerleave', function () { fr.style.setProperty('--rx', '0deg'); fr.style.setProperty('--ry', '0deg'); });
   });
-  function carousel() {
-    if (!isMob) return;
-    var c = stage.scrollLeft + stage.clientWidth / 2, best = 1e9, bi = 0;
-    if (!carousel.pos || resizedC) { carousel.pos = ikons.map(function (el) { return { el: el, l: el.offsetLeft, w: el.offsetWidth }; }).sort(function (a, b) { return a.l - b.l; }); resizedC = false; }
-    carousel.pos.forEach(function (q, i) {
-      var el = q.el, d = Math.abs(q.l + q.w / 2 - c) / q.w, dd = Math.min(d, 1.4);
-      el.style.setProperty('--s', (1 - dd * .12).toFixed(3)); el.style.setProperty('--o', (1 - dd * .45).toFixed(3));
-      el._active = d < .3; if (d < best) { best = d; bi = i; }
-    });
-    dots.forEach(function (dt, i) { dt.classList.toggle('on', i === bi); });
-    if (carousel.bi != null && carousel.bi !== bi) buzz(4); carousel.bi = bi;
-  }
-  var resizedC = true, cq = 0;
-  stage.addEventListener('scroll', function () { if (!cq) cq = requestAnimationFrame(function () { cq = 0; carousel(); }); }, { passive: true });
-  addEventListener('resize', function () { resizedC = true; carousel(); }); carousel();
-
-  /* ---------- 10. parish life: logo strip (phones: a sideways scroll with a small progress track) ---------- */
-  var orgsEl = $('#orgs'), oTrack = mk('div', 'org-track'), oThumb = oTrack.appendChild(mk('i')), oq = 0;
-  oTrack.setAttribute('aria-hidden', 'true'); orgsEl.parentNode.insertBefore(oTrack, orgsEl.nextSibling);
-  function lifeBar() {
-    oq = 0; var sw = orgsEl.scrollWidth, cw = orgsEl.clientWidth; if (!cw || sw <= cw) { oTrack.style.visibility = 'hidden'; return; }
-    oTrack.style.visibility = ''; var tw = Math.max(.18, cw / sw), p = orgsEl.scrollLeft / (sw - cw);
-    oTrack.style.setProperty('--tw', (tw * 100).toFixed(1) + '%'); oTrack.style.setProperty('--tx', (p * (1 - tw) * 72).toFixed(1) + 'px');
-  }
-  orgsEl.addEventListener('scroll', function () { if (!oq) oq = requestAnimationFrame(lifeBar); }, { passive: true });
-  addEventListener('resize', lifeBar); lifeBar();
-
   $$('.rv').forEach(function (el) { if (el.matches('img, picture, video, .gstrip') || el.querySelector('img, video')) el.classList.add('nb'); });
 
   /* one-row gallery: endless loop, arrows, arrow keys, drag with the mouse.
@@ -2328,7 +2433,6 @@ var ML = {
   }
   all.forEach(function (it) {
     it.addEventListener('click', function () {
-      if (it.classList.contains('ikon') && isMob && !it._active) { stage.scrollTo({ left: it.offsetLeft - (stage.clientWidth - it.offsetWidth) / 2, behavior: motion ? 'smooth' : 'auto' }); buzz(5); return; }
       openLb(it);
     });
   });
@@ -2435,7 +2539,7 @@ var ML = {
     if (!sheetOpen && !lbOpen) { locks = 1; lockScroll(false); }   // never leave the page locked
     setHj(false); land(); resized = true; kick();
     if (h) showItem(null);
-    requestAnimationFrame(function () { carousel(); lifeBar(); langThumb(); });
+    requestAnimationFrame(langThumb);
   }
   function route(instant) {
     var h = wantsHist();
@@ -2456,7 +2560,7 @@ var ML = {
   var hero = $('#top'), songWrap = $('#songWrap'), songBg = $('#songBg'), songProg = $('#songProg'), footer = $('#footer');
   var heroCardEl = $('.hero-card'), heroSideEl = $('.hero-side'), heroP = -1;
   var prog = $('#prog'), pars = $$('[data-par]'), heroFrame = $('#heroFrame'), hh = $('.hh'), galEl = $('#gallery'), visEl = $('#visit');
-  var last = performance.now(), prevY = -1, navMode = '', navHidden = false, upAcc = 0, G = null, running = false, idle = 0, dockKey = '';
+  var last = performance.now(), prevY = -1, navMode = '', navHidden = false, upAcc = 0, downAcc = 0, G = null, running = false, idle = 0, dockKey = '';
   if (fine && motion) heroFrame.addEventListener('pointermove', function (e) { var r = heroFrame.getBoundingClientRect(); heroFrame.style.setProperty('--lx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); heroFrame.style.setProperty('--ly', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); });
   function eo(x) { return 1 - Math.pow(1 - x, 3); }
   function bx(el) { var r = el.getBoundingClientRect(); return { t: r.top + scrollY, h: r.height }; }
@@ -2497,10 +2601,11 @@ var ML = {
     if (mode !== navMode) { navMode = mode; nav.classList.toggle('solid', mode === 'solid' || mode === 'bare'); nav.classList.toggle('bare', mode === 'bare'); nav.classList.toggle('dark', mode === 'dark'); }
     // hide on the way down, return on the way up
     var hideFrom = inHist ? (isMob ? G.hh - nh : 420) : G.hero * .9;
-    if (!sheetOpen && y > hideFrom) {
-      if (dy > 3) { upAcc = 0; if (!navHidden) { navHidden = true; nav.classList.add('hide'); } }
-      else if (dy < 0) { upAcc -= dy; if (navHidden && upAcc > 24) { navHidden = false; nav.classList.remove('hide'); } }
-    } else if (navHidden) { navHidden = false; nav.classList.remove('hide'); }
+    var atEnd = y >= G.ms - 4;
+    if (!sheetOpen && y > hideFrom && !atEnd) {
+      if (dy > 0) { upAcc = 0; downAcc += dy; if (!navHidden && downAcc > 36) { navHidden = true; nav.classList.add('hide'); } }
+      else if (dy < 0) { downAcc = 0; upAcc -= dy; if (navHidden && upAcc > (isMob ? 48 : 24)) { navHidden = false; nav.classList.remove('hide'); } }
+    } else if (!atEnd && navHidden) { navHidden = false; upAcc = downAcc = 0; nav.classList.remove('hide'); }
     if (moved || resized) { var pr = clamp(y / G.ms, 0, 1); prog.style.transform = 'scaleX(' + pr.toFixed(4) + ')'; if (ringC) ringC.style.strokeDashoffset = (100 - pr * 100).toFixed(2); }
 
     // hero depth on scroll (desktop + tablet): photo eases back, the name panel lifts and fades
