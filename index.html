@@ -32,7 +32,8 @@
 <meta name="theme-color" content="#0b1220">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="icon" href="images/cross.png">
+<link rel="icon" href="images/cross.svg" type="image/svg+xml">
+<link rel="alternate icon" href="images/cross.png">
 <link rel="apple-touch-icon" href="images/cross.png">
 <link rel="preload" as="image" href="images/hero.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1642,10 +1643,13 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
   .hero-side{padding-left:18px; padding-right:18px}
   .hs-b{padding:0 12px; font-size:.84rem}
 }
-/* navbar logo: the round medallion of the Mother of God */
-.brand .lg-mark{height:56px; width:56px; filter:drop-shadow(0 4px 10px rgba(16,20,29,.18))}
-@media (max-width:760px){ .brand .lg-mark{height:46px; width:46px} }
-@media (max-width:380px){ .brand .lg-mark{height:42px; width:42px} }
+/* navbar logo: a simple gold cross */
+.brand .lg-cross{display:block; height:40px; width:auto; aspect-ratio:60/90; fill:var(--gold); transition:fill .4s var(--out), transform .8s var(--out)}
+.nav.dark .brand .lg-cross{fill:var(--gold-2)}
+.fine .brand:hover .lg-cross{transform:scale(1.06)}
+@media (max-width:760px){ .brand .lg-cross{height:34px} }
+/* loader: the same cross */
+.curtain img{width:auto; height:min(84px,14vw)}
 @media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; scroll-behavior:auto !important} }
 </style>
 </head>
@@ -1689,7 +1693,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
 <header class="nav" id="nav">
   <div class="nav-bg" aria-hidden="true"></div>
   <div class="nav-in">
-    <a class="brand" href="#top" aria-label="St. Mary's Orthodox Valiyapally, Jalahalli, home"><img class="lg-mark" src="images/logo-mark.png" alt="St. Mary's Orthodox Valiyapally, Jalahalli" width="256" height="256"></a>
+    <a class="brand" href="#top" aria-label="St. Mary's Orthodox Valiyapally, Jalahalli, home"><svg class="lg-cross" viewBox="0 0 60 90" role="img" aria-label="St. Mary's Orthodox Valiyapally, Jalahalli"><path d="M25 0h10a1 1 0 0 1 1 1v21h19a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H36v55a1 1 0 0 1-1 1H25a1 1 0 0 1-1-1V34H5a1 1 0 0 1-1-1V23a1 1 0 0 1 1-1h19V1a1 1 0 0 1 1-1z"/></svg></a>
     <nav aria-label="Main"><ul class="links" id="links">
       <li><a href="#top" data-i18n="dock.home">Home</a></li>
       <li><a href="#life" data-i18n="nav.life">Organizations</a></li>
@@ -2177,7 +2181,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
 </div>
 
 <!-- page-change curtain -->
-<div class="curtain boot" id="curtain" aria-hidden="true"><i style="--c:0"></i><i style="--c:1"></i><i style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><img src="images/logo-light.png" alt=""></div>
+<div class="curtain boot" id="curtain" aria-hidden="true"><i style="--c:0"></i><i style="--c:1"></i><i style="--c:2"></i><i style="--c:3"></i><i style="--c:4"></i><img src="images/cross.svg" alt=""></div>
 
 <!-- ======================= FOOTER ======================= -->
 <footer class="footer" id="footer">
