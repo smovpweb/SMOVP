@@ -961,7 +961,6 @@ html[lang="ml"] .hh-title{font-size:clamp(2.8rem,7vw,6rem); line-height:1.15; fo
 /* sticky year bar */
 .hj{position:sticky; top:10px; z-index:150; display:flex; justify-content:center; padding:clamp(24px,3vw,40px) var(--g) 0; pointer-events:none}
 .hj-in{transition:transform .75s var(--io)}
-.nav:not(.hide) ~ .hist .hj-in{transform:translate3d(0,calc(var(--nav-h) - 2px),0)}
 .hj-in{position:relative; pointer-events:auto; display:flex; flex-direction:column; max-width:100%; border-radius:22px; background:rgba(255,253,249,.82); border:1px solid var(--line); box-shadow:0 24px 50px -30px rgba(16,20,29,.45); backdrop-filter:blur(20px) saturate(1.6); -webkit-backdrop-filter:blur(20px) saturate(1.6); overflow:hidden}
 .hj-row{position:relative; display:flex; align-items:center; gap:2px; overflow-x:auto; scrollbar-width:none; padding:6px; isolation:isolate}
 .hj-row::-webkit-scrollbar{display:none}
@@ -1425,7 +1424,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
 /* history on phones: the year bar is a flush strip under the top bar, cards are lighter */
 @media (max-width:860px){
   .hh-lead{font-size:.97rem}
-  .hj{top:0; padding:0; margin-top:24px}
+  .hj{top:0; padding:0; margin-top:0}
   .hj-in{border-radius:0; border-width:1px 0; background:var(--paper); box-shadow:0 12px 26px -22px rgba(16,20,29,.55)}
   .hj-now{height:54px; padding:0 var(--g)}
   .hj-row{padding:2px var(--g) 14px}
@@ -1438,6 +1437,210 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
   .tl-text{margin-top:10px}
   .tl-item{padding:12px 0}
   .tl-node{top:44px}
+}
+/* ==========================================================================
+   22. ICONS ON PHONES (v3) + HISTORY (v3, every screen)
+   ========================================================================== */
+.ik-track{display:none}
+/* phones: the same arch as on larger screens, as one row you swipe; Christ in the middle and larger */
+@media (max-width:760px){
+  .stage{display:flex; align-items:stretch; gap:14px; margin:0 calc(var(--g) * -1); padding:8px var(--g) 22px; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  .stage::-webkit-scrollbar{display:none}
+  .ikon,.ikon.c{order:0; grid-column:auto; justify-self:auto; margin:0; width:auto; grid-template-rows:1fr auto; gap:16px; scroll-snap-align:center}
+  .ikon{flex:0 0 34vw}
+  .ikon[style*="--ka:1"]{flex-basis:40vw}
+  .ikon.c{flex:0 0 60vw; z-index:1}
+  .ik-frame{align-self:end}
+  /* every caption block is as tall as Christ's, so all five icons stand on one line */
+  .ik-cap{min-height:8.6rem; align-content:start}
+  html[lang="ml"] .ik-cap{min-height:9.4rem}
+  .ikon.c::before{width:150%; top:40%}
+  .ik-frame img{border-radius:5px; filter:drop-shadow(0 18px 20px rgba(60,40,10,.24))}
+  .ikon.c .ik-frame img{filter:drop-shadow(0 28px 32px rgba(90,60,10,.32))}
+  .lord .ikon:not(.c) .ik-cap h3{font:400 .86rem/1.25 var(--serif); color:var(--muted); letter-spacing:0}
+  html[lang="ml"] .lord .ikon:not(.c) .ik-cap h3{font-family:var(--ml); font-size:.74rem; line-height:1.4}
+  .lord .ikon.c .ik-cap h3{font-size:clamp(1.6rem,7vw,1.95rem)}
+  .lord .ikon.c .ik-cap p{font-size:1rem}
+  .ik-track{display:block; position:relative; width:72px; height:2px; margin:0 auto; border-radius:2px; background:var(--line); overflow:hidden}
+  .ik-track i{position:absolute; inset:0 auto 0 0; width:var(--tw,40%); border-radius:2px; background:var(--gold); transform:translate3d(var(--tx,0px),0,0)}
+  .lord-foot{margin-top:44px}
+}
+
+/* ---------- history: the opening ---------- */
+.hh{padding-bottom:clamp(8px,1.4vw,20px)}
+.hh-title{margin-top:clamp(32px,3.6vw,52px)}
+.hh-lead{color:var(--ink-2); opacity:.82}
+@media (max-width:860px){
+  /* Back to home sits at the top, over the photograph */
+  .hh-text{position:static}
+  .hh-text > :not(.hh-back){position:relative; z-index:2}
+  .hh-text > .hh-back{display:inline-flex; position:absolute; z-index:3; top:calc(var(--nav-h) + 10px); left:var(--g); height:40px; padding:0 16px 0 12px; gap:8px; font-size:.84rem;
+    color:#fff; border-color:rgba(255,255,255,.3); background:rgba(11,18,32,.55); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); --fill:rgba(255,255,255,.12)}
+  .hh-photo .ph{aspect-ratio:1/1}
+  .hh-text{margin-top:-130px}
+  .hh{padding-bottom:34px}
+  .hh-lead{color:rgba(255,255,255,.74); opacity:1; font-size:.98rem}
+}
+
+/* ---------- history: the timeline (one structure on every screen) ---------- */
+.tl-big{display:none}
+.tl-item:not(.has-img) .tl-side{display:none}
+.tl-y{display:none}
+.motion .tl-item.l .tl-card.rv,.motion .tl-item.r .tl-card.rv{transform:translate3d(0,26px,0)}
+.motion .tl-item .tl-card.rv.in{transform:none}
+.tl-text{color:var(--ink-2)}
+/* photo groups: whole photos side by side at one height, swiped when they don't fit */
+.tl-trio,.tl-tall{--ph:clamp(200px,22vw,290px); display:flex; align-items:flex-start; gap:10px; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x proximity; scrollbar-width:none; overscroll-behavior-x:contain; -webkit-overflow-scrolling:touch}
+.tl-trio::-webkit-scrollbar,.tl-tall::-webkit-scrollbar{display:none}
+.tl-row{display:contents}
+.tl-tall .tl-main{grid-row:auto}
+.tl-trio .tl-media,.tl-tall .tl-media,.tl-row .tl-media{flex:none; display:block; width:auto; height:var(--ph); max-width:none; scroll-snap-align:start; border-radius:14px; overflow:hidden; background:var(--paper-3); box-shadow:none}
+.tl-trio .tl-media img,.tl-tall .tl-media img,.tl-trio > .tl-media img,.tl-tall .tl-main img{display:block; width:auto; max-width:none; height:100%; max-height:none; object-fit:contain}
+.tl-sfoot{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 2px 0}
+.tl-sn{color:var(--muted)}
+.tl-strk{position:relative; width:64px; height:2px; border-radius:2px; background:var(--line); overflow:hidden}
+.tl-strk i{position:absolute; inset:0 auto 0 0; width:var(--tw,40%); border-radius:2px; background:var(--gold); transform:translate3d(var(--tx,0px),0,0)}
+.tl-fig{align-items:flex-start !important}
+.tl-cap{align-self:flex-start}
+
+@media (min-width:861px){
+  .tl{--yc:clamp(150px,16vw,210px); --nc:64px; max-width:1180px}
+  .tl-line{left:calc(var(--g) + var(--yc) + var(--nc) / 2); translate:-50% 0}
+  .tl-item,.tl-item.l,.tl-item.r{grid-template-columns:var(--yc) var(--nc) minmax(0,1fr); grid-template-rows:auto auto; grid-template-areas:"y n a" "y n b"; align-items:start; padding:22px 0}
+  .tl-y{display:block; grid-area:y; align-self:stretch}
+  .tl-yv{position:sticky; top:calc(var(--nav-h) + 118px); display:block; padding-top:20px; text-align:right; font:300 clamp(2.6rem,4vw,3.9rem)/.9 var(--serif); letter-spacing:-.045em; font-feature-settings:"lnum"; color:rgba(16,20,29,.2); transition:color .7s var(--out)}
+  .tl-item.on .tl-yv{color:var(--gold)}
+  .tl-y.rep .tl-yv{visibility:hidden}
+  .tl-node{grid-area:n; margin-top:38px}
+  .tl-item.l .tl-card,.tl-item.r .tl-card{grid-area:a}
+  .tl-item.l .tl-side,.tl-item.r .tl-side{grid-area:b; justify-content:flex-start}
+  .tl-card{padding:32px 38px 34px; border-radius:24px}
+  .tl-date.same{display:none}
+  .tl-title{font-size:clamp(1.55rem,2vw,2rem); margin-top:14px}
+  .tl-date.same + .tl-title{margin-top:0}
+  .tl-text{max-width:64ch}
+  .tl-item.has-img .tl-card{border-radius:24px 24px 0 0; border-bottom:0; box-shadow:none; padding-bottom:24px}
+  .tl-item.has-img .tl-side{display:block; padding:0 38px 34px; background:var(--card); border:1px solid var(--line-2); border-top:0; border-radius:0 0 24px 24px; box-shadow:0 30px 60px -50px rgba(16,20,29,.4)}
+  .fine .tl-item.has-img .tl-card:hover{transform:none}
+  .tl-fig .tl-media img{max-height:min(460px,62vh)}
+  .tl-side > .tl-media{display:inline-block}
+  .tl-side > .tl-media img{max-height:min(420px,58vh)}
+  .tl-cap{margin-top:14px}
+  .motion .tl-item .tl-side.rv{transform:translate3d(0,26px,0)}
+}
+@media (max-width:860px){
+  .tl-trio,.tl-tall{--ph:min(176px,46vw)}
+}
+
+/* ---------- history: the year bar ---------- */
+.hj{transition:opacity .45s var(--out), visibility 0s}
+.hj .hj-in{transition:none}
+.hj.past{opacity:0; visibility:hidden; transition:opacity .35s var(--out), visibility 0s .35s}
+@media (min-width:861px){ .hj{padding-top:clamp(18px,2vw,28px)} }
+
+/* ---------- history: the closing band, today's church behind the prayer ---------- */
+.ht{background:var(--navy-2); color:#fff; padding:clamp(96px,11vw,168px) 0 clamp(88px,10vw,150px); border-bottom:1px solid rgba(255,255,255,.07)}
+.ht-bg{position:absolute; inset:0; z-index:-2}
+.ht-bg img{width:100%; height:100%; object-fit:cover; object-position:50% 40%; opacity:.26; filter:saturate(.75)}
+.ht::before{z-index:-1; left:0; top:0; width:100%; height:100%; aspect-ratio:auto; translate:none; border-radius:0;
+  background:radial-gradient(70% 70% at 50% 50%,rgba(11,18,32,.55),rgba(11,18,32,.94)), linear-gradient(180deg,var(--navy-2),rgba(11,18,32,0) 30%,rgba(11,18,32,0) 70%,var(--navy-2))}
+.ht-orn{color:var(--gold-2)}
+.ht-orn i{background:linear-gradient(90deg,rgba(214,176,104,0),rgba(214,176,104,.7))}
+.ht .ht-quote,.ht-head + .wrap .ht-quote{color:#fff}
+.ht-quote cite{color:var(--gold-3)}
+.ht .btn-white{color:var(--ink)}
+@media (max-width:640px){
+  .ht{padding:84px 0 76px}
+  .ht .ht-quote{font-size:1.36rem; line-height:1.42}
+  .ht .ht-acts{display:grid; grid-template-columns:1fr 1fr; gap:8px; width:100%}
+  .ht .ht-acts .btn{padding:0 12px; font-size:.86rem}
+}
+/* ==========================================================================
+   23. HISTORY (v4): one card for words and photos; strip arrows; no phone back pill
+       + PATRON SAINTS on phones: the Mother of God large, the two saints beneath
+   ========================================================================== */
+.tl-item .tl-card .tl-side,.tl-item.has-img .tl-card .tl-side{display:block; margin-top:22px; padding:0; background:none; border:0; border-radius:0; box-shadow:none; transform:none}
+.tl-item.has-img .tl-card{border:1px solid var(--line-2); border-radius:24px; box-shadow:0 1px 2px rgba(16,20,29,.03), 0 30px 60px -50px rgba(16,20,29,.4)}
+.tl-item .tl-card .tl-trio,.tl-item .tl-card .tl-tall{margin:0; padding:0}
+@media (min-width:861px){ .tl-item.has-img .tl-card{padding:32px 38px 34px} .tl-item.has-img .tl-card .tl-side{margin-top:26px} .tl-arr{display:grid} }
+@media (max-width:860px){ .tl-item.has-img .tl-card{border-radius:20px; padding:20px 18px} .tl-item.has-img .tl-card .tl-side{margin-top:18px} .tl-item .tl-card .tl-trio,.tl-item .tl-card .tl-tall{--ph:min(210px,52vw)} }
+.tl-snav{display:flex; align-items:center; gap:12px}
+.tl-arr{display:none; place-items:center; width:38px; height:38px; padding:0; border-radius:50%; border:1px solid var(--line-2); background:var(--paper); color:var(--ink); cursor:pointer; transition:background .3s var(--out), color .3s var(--out), opacity .3s var(--out)}
+.tl-arr svg{width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round}
+.fine .tl-arr:hover:not(:disabled){background:var(--ink); color:#fff; border-color:var(--ink)}
+.tl-arr:disabled{opacity:.3; cursor:default}
+.tl-arr:focus-visible{outline:2px solid var(--gold); outline-offset:2px}
+.tl-sfoot.fits .tl-snav{display:none}
+@media (min-width:861px){ .tl-snav .tl-arr{display:grid} }
+@media (max-width:860px){ .hh-text > .hh-back{display:none} }
+
+}
+/* ==========================================================================
+   24. PATRON SAINTS ON PHONES: one row to swipe, St. Mary in the middle
+   ========================================================================== */
+.pt-track{display:none}
+@media (max-width:760px){
+  .patron-head{margin-bottom:22px}
+  .trio{display:flex; align-items:flex-end; gap:0; margin:0 calc(var(--g) * -1); padding:26px 0 8px; overflow-x:auto; overflow-y:hidden; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+  .trio::-webkit-scrollbar{display:none}
+  .trio::before,.trio::after{content:""; flex:0 0 calc((100vw - 58vw) / 2)}
+  .saint,.saint.main{flex:0 0 58vw; width:auto; order:0; grid-column:auto; justify-self:auto; scroll-snap-align:center; scroll-snap-stop:always; padding:0 10px}
+  .saint .medal,.saint.main .medal{width:100%; transition:transform .55s cubic-bezier(.2,.7,.2,1), opacity .55s cubic-bezier(.2,.7,.2,1), filter .55s; transform-origin:50% 100%}
+  .trio.js .saint:not(.cur) .medal{transform:scale(.74); opacity:.6; filter:saturate(.75)}
+  .trio.js .saint.cur ~ .saint .medal{transform-origin:0 100%}
+  .trio.js .saint:has(~ .saint.cur) .medal{transform-origin:100% 100%}
+  .saint figcaption{margin-top:22px; gap:10px; transition:opacity .45s cubic-bezier(.2,.7,.2,1)}
+  .trio.js .saint:not(.cur) figcaption{opacity:0}
+  .saint-name,.saint.main .saint-name{font-size:clamp(1.9rem,8.4vw,2.3rem); line-height:1.05; white-space:nowrap}
+  .saint-tag{font-size:.7rem; letter-spacing:.16em; max-width:none; white-space:nowrap}
+  html[lang="ml"] .saint-name,html[lang="ml"] .saint.main .saint-name{font-size:1.5rem; line-height:1.35}
+  html[lang="ml"] .saint-tag{font-size:.92rem; letter-spacing:0}
+  .medal img{filter:drop-shadow(0 22px 26px rgba(80,55,10,.28))}
+  .pt-track{display:block; position:relative; width:72px; height:2px; margin:20px auto 0; border-radius:2px; background:var(--line); overflow:hidden}
+  .pt-track i{position:absolute; inset:0 auto 0 0; width:33.4%; border-radius:2px; background:var(--gold); transform:translate3d(var(--tx,0px),0,0); transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+}
+/* ==========================================================================
+   25. HOME HERO ON PHONES: the whole church in view, a calm name block beneath
+   ========================================================================== */
+@media (max-width:760px){
+  .hero-row{min-height:100svh}
+  /* photograph: the full church, framed top to bottom, fading into the night blue */
+  .hero-media{top:0; bottom:auto; height:max(62svh,330px)}
+  .hero-media img{object-position:40% 58%}
+  .hero-shade{background:
+    linear-gradient(180deg,rgba(7,12,22,.62) 0%,rgba(7,12,22,0) 22%),
+    linear-gradient(180deg,rgba(7,12,22,0) calc(max(62svh,330px) * .62),rgba(7,12,22,.7) calc(max(62svh,330px) * .86),var(--navy-2) max(62svh,330px))}
+  .hero-light{display:none}
+
+  /* words: eyebrow, name, church, two actions */
+  .hero-side{justify-content:flex-end; padding:0 22px calc(var(--dock-h) + 30px + var(--safe-b))}
+  .hs-card{gap:0}
+  .hs-name{gap:14px}
+  .hs-place{order:-1; gap:12px; font-size:.66rem; letter-spacing:.24em; color:var(--gold-3)}
+  .hs-place::before{width:22px; background:var(--gold-3)}
+  .hero-title{font-size:clamp(2.3rem,10.4vw,2.75rem); line-height:1.02; letter-spacing:-.03em; text-shadow:none}
+  html[lang="ml"] .hero-title{font-size:clamp(1.6rem,7.6vw,2rem); line-height:1.3}
+  html[lang="ml"] .hs-place{font-size:.86rem; letter-spacing:0}
+
+  .hs-church{order:1; align-self:stretch; width:auto; margin:22px 0 0; padding:16px 0 0; gap:12px; align-items:center; border:0; border-top:1px solid rgba(255,255,255,.12); border-radius:0; background:none; backdrop-filter:none; -webkit-backdrop-filter:none}
+  .hs-emblem{width:30px; height:auto}
+  .hs-church > div{display:grid; gap:2px; min-height:0; padding:0; border:0}
+  .side-church{font:400 .82rem/1.3 var(--sans); color:rgba(255,255,255,.86)}
+  .side-dio{font-size:.74rem; line-height:1.3; color:rgba(255,255,255,.5)}
+  html[lang="ml"] .side-church{font-family:var(--ml); font-size:.8rem}
+  html[lang="ml"] .side-dio{font-size:.76rem}
+
+  .hs-acts{order:2; margin-top:22px; grid-template-columns:1fr 1fr; gap:10px}
+  html[lang="ml"] .hs-acts{grid-template-columns:1fr 1fr}
+  .hs-b{height:48px; padding:0 18px; font-size:.88rem; justify-content:center; gap:10px}
+  html[lang="ml"] .hs-b{padding:0 12px; font-size:.82rem}
+  .hs-b .ar,.hs-b .ar svg,.hs-b .ico{width:16px; height:16px}
+  .hs-b.btn-ink{background:#fff; color:var(--ink)}
+  .hs-b.btn-line{background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.22); color:#fff}
+}
+@media (max-width:360px){
+  .hero-side{padding-left:18px; padding-right:18px}
+  .hs-b{padding:0 12px; font-size:.84rem}
 }
 @media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; scroll-behavior:auto !important} }
 </style>
@@ -1772,9 +1975,6 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
         <a class="btn btn-line hh-back rv-h" href="#top" style="--d:.2s"><svg class="ico"><use href="#back"/></svg><span data-i18n="hist.back">Back to home</span></a>
         <h1 class="hh-title"><span class="ln"><span style="--i:0" data-i18n="hist.t1">Our</span></span> <span class="ln"><span style="--i:1" data-i18n="hist.t2">history</span></span></h1>
         <p class="hh-lead rv-h" style="--d:.7s" data-i18n="hist.lead">St. Mary’s Orthodox Valiyapally, Jalahalli, stands as a testament to the faith, dedication, and spiritual heritage of the Malankara Orthodox Syrian Church community in the region. Its history reflects the devotion, perseverance, and collective efforts of generations who nurtured the parish and its spiritual mission.</p>
-        <div class="hh-acts rv-h" style="--d:.95s">
-          <a class="btn btn-line hh-back2" href="#top"><svg class="ico"><use href="#back"/></svg><span data-i18n="hist.back">Back to home</span></a>
-        </div>
       </div>
       <!-- @EDIT:PHOTOS banner photo -->
       <figure class="hh-photo">
@@ -1952,6 +2152,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
   </section>
   <!-- the parish today -->
   <section class="sec ht" aria-label="A prayer for the parish">
+    <div class="ht-bg" aria-hidden="true"><img src="images/hero.jpg" alt="" loading="lazy" decoding="async"></div>
     <div class="wrap ht-close">
       <span class="ht-orn rv" aria-hidden="true"><i></i><svg class="ico"><use href="#i-cross"/></svg><i></i></span>
       <blockquote class="ht-quote rv" style="--d:.08s">
@@ -1959,7 +2160,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
         <cite class="mono-l" data-i18n="foot.copy">St. Mary's Orthodox Valiyapally, Jalahalli</cite>
       </blockquote>
       <div class="ht-acts rv" style="--d:.16s">
-        <a class="btn btn-ink" href="#top"><svg class="ico"><use href="#back"/></svg><span data-i18n="hist.back">Back to home</span></a>
+        <a class="btn btn-white" href="#top"><svg class="ico"><use href="#back"/></svg><span data-i18n="hist.back">Back to home</span></a>
         <a class="btn btn-gold" href="#visit"><span data-i18n="hero.cta1">Plan your visit</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
       </div>
     </div>
@@ -2034,7 +2235,7 @@ var ML = {
 
   'int.sanct': 'മദ്ബഹ', 'int.sanct.s': 'വിശുദ്ധ കുർബാന അർപ്പിക്കുന്ന ഇടം',
 
-  'gal.kicker': 'ഗാലറി', 'gal.hint': 'വശത്തേക്ക് നീക്കുക · ചിത്രം തുറക്കാൻ തൊടുക',
+  'gal.kicker': 'ഗാലറി', 'lord.feasts': 'കർത്താവിന്റെ തിരുനാളുകൾ', 'gal.hint': 'വശത്തേക്ക് നീക്കുക · ചിത്രം തുറക്കാൻ തൊടുക',
   'gal.8': 'നിലവിളക്ക്', 'gal.8.s': 'പ്രാർത്ഥനയുടെ ദീപം',
   'gal.1': 'മണിമാളിക', 'gal.1.s': 'ഇടവകയെ പ്രാർത്ഥനയ്ക്കു വിളിക്കുന്നു',
   'gal.2': 'താഴികക്കുടം', 'gal.2.s': 'കുരിശിനാൽ മകുടം ചാർത്തിയത്',
@@ -2318,6 +2519,25 @@ var ML = {
 
   /* ---------- 9. icons: fan-out on scroll (desktop), 3D tilt, swipe carousel (phones) ---------- */
   var lord = $('#lord'), stage = $('#stage'), ikons = $$('.ikon', stage);
+  var christ = $('.ikon.c', stage), ikTouched = false;
+  var ikTrack = mk('div', 'ik-track'), ikQ = 0; ikTrack.appendChild(mk('i')); ikTrack.setAttribute('aria-hidden', 'true');
+  stage.parentNode.insertBefore(ikTrack, stage.nextSibling);
+  function ikBar() {
+    ikQ = 0; var sw = stage.scrollWidth, cw = stage.clientWidth;
+    if (!isMob || sw <= cw + 2) { ikTrack.style.visibility = 'hidden'; return; }
+    ikTrack.style.visibility = ''; var tw = Math.max(.2, cw / sw), pp = stage.scrollLeft / (sw - cw);
+    ikTrack.style.setProperty('--tw', (tw * 100).toFixed(1) + '%'); ikTrack.style.setProperty('--tx', (pp * (1 - tw) * 72).toFixed(1) + 'px');
+  }
+  // phones: the row opens with Christ in the middle of the screen
+  function centreChrist() {
+    if (!isMob) { stage.scrollLeft = 0; return; }
+    if (!ikTouched) stage.scrollLeft = christ.offsetLeft - (stage.clientWidth - christ.offsetWidth) / 2;
+    ikBar();
+  }
+  stage.addEventListener('pointerdown', function () { ikTouched = true; }, { passive: true });
+  stage.addEventListener('touchstart', function () { ikTouched = true; }, { passive: true });
+  stage.addEventListener('scroll', function () { if (!ikQ) ikQ = requestAnimationFrame(ikBar); }, { passive: true });
+  addEventListener('resize', centreChrist); addEventListener('load', centreChrist); centreChrist();
   if (fine && motion) ikons.forEach(function (ik) {
     if (ik.classList.contains('c')) return;
     var fr = $('.ik-frame', ik);
@@ -2400,7 +2620,7 @@ var ML = {
     $$('button', thumbs).forEach(function (b, i) { b.classList.toggle('on', i === lbI); if (i === lbI && b.scrollIntoView) thumbs.scrollTo({ left: b.offsetLeft - thumbs.clientWidth / 2 + b.offsetWidth / 2, behavior: motion ? 'smooth' : 'auto' }); });
   }
   function openLb(it) {
-    var set = it.closest('#gstrip, .stage'); group = (set ? $$('.lb-item', set) : all).filter(function (el) { return el.getClientRects().length; }); lbI = Math.max(0, group.indexOf(it));
+    var set = it.closest('#gstrip, .lord'); group = (set ? $$('.lb-item', set) : all).filter(function (el) { return el.getClientRects().length; }); lbI = Math.max(0, group.indexOf(it));
     thumbs.innerHTML = '';
     group.forEach(function (g, i) { var b = mk('button'); b.type = 'button'; b.setAttribute('aria-label', 'Photo ' + (i + 1)); var im = mk('img'); im.src = srcImg(g).currentSrc || srcImg(g).src; im.alt = ''; b.appendChild(im); b.addEventListener('click', function () { if (i !== lbI) stepLb(i - lbI, i); }); thumbs.appendChild(b); });
     var src = srcImg(it); lbImg.src = src.currentSrc || src.src; lbImg.alt = src.alt;
@@ -2488,7 +2708,7 @@ var ML = {
 
   /* ---------- 14. history view (#history) ---------- */
   var curtain = $('#curtain'), baseTitle = document.title, tlEl = $('#tl'), tlFill = $('#tlFill'), tlDot = $('#tlDot'), tlItems = $$('.tl-item');
-  var hj = $('#hj'), hjNow = $('#hjNow'), hjYr = $('#hjYr'), hjTt = $('#hjTt'), hjCt = $('#hjCt'), hjInd = $('#hjInd'), hjRow = $('#hjRow'), hjP = $('#hjP'), jumpOn = null, curItem = null;
+  var hj = $('#hj'), hjIn = $('.hj-in'), hjNow = $('#hjNow'), hjYr = $('#hjYr'), hjTt = $('#hjTt'), hjCt = $('#hjCt'), hjInd = $('#hjInd'), hjRow = $('#hjRow'), hjP = $('#hjP'), jumpOn = null, curItem = null;
   // one chip per year, a year + number on every card, and dots under each photo strip
   (function () {
     var seen = {}, N = tlItems.length;
@@ -2496,6 +2716,10 @@ var ML = {
       var dt = $('.tl-date', it), d = dt.textContent.trim(), m = d.match(/\d{4}s?/), lbl = m ? m[0] : d, card = $('.tl-card', it);
       var top = mk('div', 'tl-top'); top.setAttribute('aria-hidden', 'true'); top.appendChild(mk('span', 'tl-yr', lbl)); top.appendChild(mk('span', 'tl-no mono-l', pad(i + 1) + ' / ' + pad(N)));
       card.insertBefore(top, card.firstChild); if (d === lbl) dt.classList.add('same');
+      var yc = mk('div', 'tl-y'); yc.setAttribute('aria-hidden', 'true'); yc.appendChild(mk('span', 'tl-yv', lbl));
+      if (i && tlItems[i - 1]._lbl === lbl) yc.classList.add('rep');
+      it.insertBefore(yc, it.firstChild);
+      var side = $('.tl-side', it); if (side) { side.classList.remove('rv'); card.appendChild(side); }
       it._lbl = lbl; it._i = i;
       if (!seen[lbl]) { var a = mk('a', null, lbl); a.href = '#' + it.id; hjRow.appendChild(a); seen[lbl] = a; }
       it._chip = seen[lbl];
@@ -2503,10 +2727,44 @@ var ML = {
     $$('.tl-trio, .tl-tall', histV).forEach(function (st) {
       var n = $$('.tl-media', st).length; if (n < 2) return;
       var foot = mk('div', 'tl-sfoot'), num = mk('span', 'tl-sn mono-l', n + ' photos'), trk = mk('span', 'tl-strk'), th = trk.appendChild(mk('i')), q = 0;
-      foot.setAttribute('aria-hidden', 'true'); foot.appendChild(num); foot.appendChild(trk); st.parentNode.appendChild(foot);
-      function upd() { q = 0; var sw = st.scrollWidth, cw = st.clientWidth; if (sw <= cw + 2) { trk.style.visibility = 'hidden'; return; } trk.style.visibility = ''; var tw = Math.max(.2, cw / sw), p = st.scrollLeft / (sw - cw); trk.style.setProperty('--tw', (tw * 100).toFixed(1) + '%'); trk.style.setProperty('--tx', (p * (1 - tw) * 64).toFixed(1) + 'px'); }
+      foot.appendChild(num); num.setAttribute('aria-hidden', 'true'); trk.setAttribute('aria-hidden', 'true');
+      var nv = mk('div', 'tl-snav'), pv = mk('button', 'tl-arr'), nx = mk('button', 'tl-arr');
+      pv.type = nx.type = 'button'; pv.setAttribute('aria-label', 'Previous photo'); nx.setAttribute('aria-label', 'Next photo');
+      pv.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>'; nx.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+      function step(dir) {
+        var kids = $$('.tl-media', st), x = st.scrollLeft, cw = st.clientWidth, sl = st.getBoundingClientRect().left, tgt = null;
+        kids.forEach(function (k) { var l = k.getBoundingClientRect().left - sl + x; if (dir > 0 ? (l > x + 4 && tgt == null) : (l < x - 4)) tgt = l; });
+        if (tgt == null) tgt = dir > 0 ? st.scrollWidth - cw : 0;
+        st.scrollTo({ left: tgt, behavior: motion ? 'smooth' : 'auto' });
+      }
+      pv.addEventListener('click', function () { step(-1); }); nx.addEventListener('click', function () { step(1); });
+      nv.appendChild(pv); nv.appendChild(trk); nv.appendChild(nx); foot.appendChild(nv); st.parentNode.appendChild(foot);
+      function upd() { q = 0; var sw = st.scrollWidth, cw = st.clientWidth; foot.classList.toggle('fits', sw <= cw + 2); pv.disabled = st.scrollLeft < 4; nx.disabled = st.scrollLeft > sw - cw - 4; if (sw <= cw + 2) { trk.style.visibility = 'hidden'; return; } trk.style.visibility = ''; var tw = Math.max(.2, cw / sw), p = st.scrollLeft / (sw - cw); trk.style.setProperty('--tw', (tw * 100).toFixed(1) + '%'); trk.style.setProperty('--tx', (p * (1 - tw) * 64).toFixed(1) + 'px'); }
       st.addEventListener('scroll', function () { if (!q) q = requestAnimationFrame(upd); }, { passive: true }); addEventListener('resize', upd); addEventListener('load', upd); upd();
     });
+  })();
+  // patron saints on phones: a swipe row that opens on St. Mary; the saint in the middle is lit
+  (function () {
+    var trio = $('.trio'); if (!trio) return;
+    var saints = $$('.saint', trio), mary = $('.saint.main', trio), touched = false, q = 0;
+    var trk = mk('div', 'pt-track'); trk.setAttribute('aria-hidden', 'true'); trk.appendChild(mk('i')); trio.parentNode.insertBefore(trk, trio.nextSibling);
+    function cur() {
+      q = 0; if (!isMob) { saints.forEach(function (n) { n.classList.remove('cur'); }); return; }
+      var mid = trio.scrollLeft + trio.clientWidth / 2, best = null, bd = 1e9;
+      saints.forEach(function (n, i) { var d = Math.abs(n.offsetLeft + n.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
+      saints.forEach(function (n, i) { n.classList.toggle('cur', i === best); });
+      trk.style.setProperty('--tx', (best * 24).toFixed(0) + 'px');
+    }
+    function centre() {
+      trio.classList.toggle('js', isMob);
+      if (isMob && !touched) trio.scrollLeft = mary.offsetLeft + mary.offsetWidth / 2 - trio.clientWidth / 2;
+      cur();
+    }
+    trio.addEventListener('scroll', function () { if (!q) q = requestAnimationFrame(cur); }, { passive: true });
+    trio.addEventListener('touchstart', function () { touched = true; }, { passive: true });
+    trio.addEventListener('pointerdown', function () { touched = true; }, { passive: true });
+    saints.forEach(function (n) { n.addEventListener('click', function () { if (isMob && !n.classList.contains('cur')) { touched = true; trio.scrollTo({ left: n.offsetLeft + n.offsetWidth / 2 - trio.clientWidth / 2, behavior: motion ? 'smooth' : 'auto' }); } }); });
+    addEventListener('resize', centre); addEventListener('load', centre); centre();
   })();
   function setHj(o) { hj.classList.toggle('open', o); hjNow.setAttribute('aria-expanded', String(o)); }
   hjNow.addEventListener('click', function () { setHj(!hj.classList.contains('open')); buzz(6); });
@@ -2559,7 +2817,7 @@ var ML = {
      The loop sleeps when nothing moves and wakes on scroll. */
   var hero = $('#top'), songWrap = $('#songWrap'), songBg = $('#songBg'), songProg = $('#songProg'), footer = $('#footer');
   var heroCardEl = $('.hero-card'), heroSideEl = $('.hero-side'), heroP = -1;
-  var prog = $('#prog'), pars = $$('[data-par]'), heroFrame = $('#heroFrame'), hh = $('.hh'), galEl = $('#gallery'), visEl = $('#visit');
+  var prog = $('#prog'), htEl = $('.ht'), pars = $$('[data-par]'), heroFrame = $('#heroFrame'), hh = $('.hh'), galEl = $('#gallery'), visEl = $('#visit');
   var last = performance.now(), prevY = -1, navMode = '', navHidden = false, upAcc = 0, downAcc = 0, G = null, running = false, idle = 0, dockKey = '';
   if (fine && motion) heroFrame.addEventListener('pointermove', function (e) { var r = heroFrame.getBoundingClientRect(); heroFrame.style.setProperty('--lx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%'); heroFrame.style.setProperty('--ly', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%'); });
   function eo(x) { return 1 - Math.pow(1 - x, 3); }
@@ -2573,7 +2831,7 @@ var ML = {
       g.pars = pars.map(function (el) { var b = bx(el); b.t -= el._ty || 0; return b; });
       g.scr = scrubs.map(function (o) { return bx(o.el); });
     } else {
-      g.hh = hh.offsetHeight; g.tl = bx(tlEl); g.items = tlItems.map(bx);
+      g.hh = hh.offsetHeight; g.tl = bx(tlEl); g.items = tlItems.map(bx); g.ht = bx(htEl);
     }
     G = g; resized = false;
     if (!hoverLink) moveBar(activeLink);
@@ -2596,7 +2854,7 @@ var ML = {
     // nav look: clear over a dark cover, paper glass over light sections, navy over dark ones
     var mode = inHist ? (isMob && y < G.hh - nh ? 'clear' : 'solid') : (isMob && y < G.hero - nh ? 'clear' : 'solid');
     if (!inHist && mid > G.song.t && mid < G.song.t + G.song.h) mode = 'dark';
-    if (mid > G.foot.t) mode = 'dark';
+    if (mid > G.foot.t || (inHist && G.ht && mid > G.ht.t)) mode = 'dark';
     if (mode === 'solid' && !isMob && y < 24) mode = 'bare';
     if (mode !== navMode) { navMode = mode; nav.classList.toggle('solid', mode === 'solid' || mode === 'bare'); nav.classList.toggle('bare', mode === 'bare'); nav.classList.toggle('dark', mode === 'dark'); }
     // hide on the way down, return on the way up
@@ -2649,6 +2907,11 @@ var ML = {
       var trT = G.tl.t - y, tp = clamp((vh * .55 - trT) / Math.max(1, G.tl.h), 0, 1);
       tlFill.style.transform = 'scaleY(' + tp.toFixed(4) + ')'; tlDot.style.transform = 'translate3d(0,' + (tp * G.tl.h).toFixed(1) + 'px,0)';
       hjP.style.transform = 'scaleX(' + tp.toFixed(4) + ')';
+      // the year bar sits just under the top bar while that bar shows, and slides up with it
+      var hjTg = navHidden ? 0 : clamp(G.nh - 2 - hj.getBoundingClientRect().top, 0, G.nh), hjO = hj._o == null ? hjTg : hj._o;
+      hjO += (hjTg - hjO) * Math.min(1, .26 * dtk); if (Math.abs(hjTg - hjO) < .3) hjO = hjTg; else lordBusy = true;
+      if (hjO !== hj._o) { hj._o = hjO; hjIn.style.transform = hjO ? 'translate3d(0,' + hjO.toFixed(1) + 'px,0)' : ''; }
+      var past = G.tl.t + G.tl.h - y < G.nh + 140; if (past !== hj._past) { hj._past = past; hj.classList.toggle('past', past); if (past) setHj(false); }
       var cur = null;
       for (i = 0; i < tlItems.length; i++) {
         b = G.items[i]; var it = tlItems[i], on2 = b.t - y + b.h / 2 < vh * .64;
