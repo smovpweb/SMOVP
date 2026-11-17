@@ -1687,11 +1687,11 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
   <div class="nav-in">
     <a class="brand" href="#top" aria-label="St. Mary's Orthodox Valiyapally, Jalahalli, home"><img class="lg-light" src="images/logo-light.png" alt="St. Mary's Orthodox Valiyapally, Jalahalli" width="775" height="322"><img class="lg-dark" src="images/logo.png" alt="" aria-hidden="true" width="775" height="322"></a>
     <nav aria-label="Main"><ul class="links" id="links">
-      <li><a href="#welcome" data-i18n="nav.parish">Our parish</a></li>
+      <li><a href="#top" data-i18n="dock.home">Home</a></li>
       <li><a href="#life" data-i18n="nav.life">Organizations</a></li>
       <li><a href="#gallery" data-i18n="gal.kicker">Gallery</a></li>
       <li><a href="https://smovp.churchgovern.com" target="_blank" rel="noopener" data-i18n="nav.live">Parish Information Centre</a></li>
-      <li><a href="#history" data-i18n="foot.history">History</a></li>
+      <li><a href="#history" data-i18n="nav.history">History</a></li>
       <li><a href="#visit" data-i18n="nav.visit">Visit</a></li>
       <li class="bar" aria-hidden="true"></li>
     </ul></nav>
@@ -1710,7 +1710,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
   <a href="#top" data-dock="home"><svg><use href="#i-home"/></svg><span data-i18n="dock.home">Home</span></a>
   <a href="#visit" data-dock="visit"><svg><use href="#i-clock"/></svg><span data-i18n="dock.times">Times</span></a>
   <a href="#gallery" data-dock="gallery"><svg><use href="#i-img"/></svg><span data-i18n="gal.kicker">Gallery</span></a>
-  <a href="#history" data-dock="history"><svg><use href="#i-book"/></svg><span data-i18n="foot.history">History</span></a>
+  <a href="#history" data-dock="history"><svg><use href="#i-book"/></svg><span data-i18n="nav.history">History</span></a>
   <button type="button" data-dock="menu" id="dockMenu" aria-controls="sheet" aria-expanded="false"><svg><use href="#i-menu"/></svg><span data-i18n="dock.menu">Menu</span></button>
 </nav>
 
@@ -1721,11 +1721,11 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
   <div class="sh-head"><img src="images/logo-light.png" alt="" width="775" height="322"><button class="sh-x" type="button" id="shX" aria-label="Close menu"><svg><use href="#x"/></svg></button></div>
   <div class="sh-body">
     <ul class="sh-links">
-      <li><a href="#welcome" style="--i:0"><small>01</small><span data-i18n="nav.parish">Our parish</span><svg class="go ico"><use href="#arr"/></svg></a></li>
+      <li><a href="#top" style="--i:0"><small>01</small><span data-i18n="dock.home">Home</span><svg class="go ico"><use href="#arr"/></svg></a></li>
       <li><a href="#life" style="--i:1"><small>02</small><span data-i18n="nav.life">Organizations</span><svg class="go ico"><use href="#arr"/></svg></a></li>
       <li><a href="#gallery" style="--i:2"><small>03</small><span data-i18n="gal.kicker">Gallery</span><svg class="go ico"><use href="#arr"/></svg></a></li>
       <li><a href="https://smovp.churchgovern.com" target="_blank" rel="noopener" style="--i:3"><small>04</small><span data-i18n="nav.live">Parish Information Centre</span><svg class="go ico"><use href="#arr"/></svg></a></li>
-      <li><a href="#history" style="--i:4"><small>05</small><span data-i18n="foot.history">History</span><svg class="go ico"><use href="#arr"/></svg></a></li>
+      <li><a href="#history" style="--i:4"><small>05</small><span data-i18n="nav.history">History</span><svg class="go ico"><use href="#arr"/></svg></a></li>
       <li><a href="#visit" style="--i:5"><small>06</small><span data-i18n="nav.visit">Visit</span><svg class="go ico"><use href="#arr"/></svg></a></li>
     </ul>
     <div class="sh-foot">
@@ -2219,7 +2219,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
 --------------------------------------------------------------------------- */
 var ML = {
   'skip': 'ഉള്ളടക്കത്തിലേക്ക് പോകുക',
-  'nav.parish': 'ഇടവക', 'nav.mary': 'മദ്ധ്യസ്ഥർ', 'nav.life': 'സംഘടനകൾ', 'nav.visit': 'സന്ദർശനം', 'nav.live': 'തത്സമയ വിവരങ്ങൾ',
+  'nav.parish': 'ഇടവക', 'nav.mary': 'മദ്ധ്യസ്ഥർ', 'nav.life': 'സംഘടനകൾ', 'nav.visit': 'സന്ദർശനം', 'nav.live': 'ഇടവക വിവരങ്ങൾ',
   'nav.times': 'ആരാധനാ സമയം', 'nav.login': 'ലോഗിൻ', 'menu.foot': 'സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളി, ജാലഹള്ളി, ബെംഗളൂരു',
 
   'hero.t1': 'സെന്റ് മേരീസ് ഓർത്തഡോക്സ്', 'hero.t2': 'വലിയപള്ളി',
@@ -2228,7 +2228,7 @@ var ML = {
   'welcome.statement': 'വിശ്വാസത്തിൽ വളരാം, ദൈവകൃപയിൽ ജീവിക്കാം',
   'welcome.quote': '“അവന്റെ വാതിലുകളിൽ സ്തോത്രത്തോടും<br>അവന്റെ പ്രാകാരങ്ങളിൽ സ്തുതിയോടുംകൂടെ വരുവിൻ;<br>അവനു സ്തോത്രം ചെയ്ത് അവന്റെ നാമത്തെ വാഴ്ത്തുവിൻ.”',
   'welcome.cite': 'സങ്കീർത്തനം 100:4',
-  'welcome.body': '1966 മുതൽ ജാലഹള്ളിയിൽ വിശ്വാസത്തിന്റെയും പ്രാർത്ഥനയുടെയും സ്നേഹത്തിന്റെയും സാക്ഷ്യമായി സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളി നിലകൊള്ളുന്നു. ക്രിസ്തുവിൽ ഒന്നായി, മാർത്തോമ്മാ ശ്ലീഹായുടെ വിശ്വാസപാരമ്പര്യം മുറുകെപ്പിടിച്ച് ഞങ്ങൾ ഒരുമിച്ച് മുന്നേറുന്നു.',
+  'welcome.body': '1966 മുതൽ ജാലഹള്ളിയിൽ വിശ്വാസത്തിന്റെയും പ്രാർത്ഥനയുടെയും സ്നേഹത്തിന്റെയും സാക്ഷ്യമായി സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളി നിലകൊള്ളുന്നു. ക്രിസ്തുവിൽ ഒന്നായി, മാർത്തോമ്മാ ശ്ലീഹായുടെ വിശ്വാസപാരമ്പര്യം മുറുകെപ്പിടിച്ച് ഒരുമയുടെ ചുവടുകളോടെ മുന്നോട്ട്.',
   'welcome.history': 'ഇടവക ചരിത്രം',
   'facts.churchv': 'മലങ്കര ഓർത്തഡോക്സ് സുറിയാനി സഭ', 'facts.diocesev': 'ബാംഗ്ലൂർ ഭദ്രാസനം',
 
@@ -2277,8 +2277,8 @@ var ML = {
   'visit.e': 'സന്ധ്യാ പ്രാർത്ഥന', 'visit.ev': 'എല്ലാ ദിവസവും വൈകിട്ട് 6:00',
   'visit.o': 'ഇടവക ഓഫീസ്', 'visit.ov': 'ഞായർ, തിങ്കൾ, ശനി · രാവിലെ 8:00 മുതൽ 12:00 വരെ',
   'visit.times': 'ആരാധനാ സമയങ്ങൾ', 'visit.daily': 'ദിവസവും', 'visit.sun': 'ഞായർ', 'visit.tuesun': 'ചൊവ്വ – ഞായർ', 'visit.open': 'ഓഫീസ് സമയം', 'visit.mon': 'തിങ്കൾ', 'visit.closed': 'അവധി', 'visit.sat': 'ശനി', 'visit.sq': 'ഞായർ · വിശുദ്ധ കുർബാന', 'visit.saq': 'ശനി · വിശുദ്ധ കുർബാന', 'visit.mp': 'പ്രഭാത / സന്ധ്യാ പ്രാർത്ഥന', 'visit.ad': 'വിലാസം', 'visit.ph': 'ഫോൺ',
-  'visit.m': 'ഇമെയിൽ', 'visit.follow': 'ഇടവകയെ പിന്തുടരുക', 'visit.dir': 'വഴി കാണിക്കുക', 'visit.copy': 'ഇമെയിൽ പകർത്തുക', 'visit.copied': 'ഇമെയിൽ വിലാസം പകർത്തി',
-  'foot.parish': 'ഇടവക', 'foot.aboutus': 'ഞങ്ങളെക്കുറിച്ച്', 'foot.history': 'ഇടവക ചരിത്രം', 'foot.vicar': 'വികാരിയും ഭാരവാഹികളും',
+  'visit.m': 'ഇമെയിൽ', 'visit.follow': 'ഇടവകയെ പിന്തുടരുക', 'visit.dir': 'Get Directions', 'visit.copy': 'ഇമെയിൽ പകർത്തുക', 'visit.copied': 'ഇമെയിൽ വിലാസം പകർത്തി',
+  'foot.parish': 'ഇടവക', 'foot.aboutus': 'ഞങ്ങളെക്കുറിച്ച്', 'foot.history': 'ഇടവക ചരിത്രം', 'nav.history': 'ചരിത്രം', 'foot.vicar': 'വികാരിയും ഭാരവാഹികളും',
   'foot.media': 'വാർത്തകളും മാധ്യമങ്ങളും', 'foot.news': 'വാർത്തകൾ', 'foot.events': 'പരിപാടികൾ',
   'foot.church': 'വിശാല സഭ', 'foot.bible': 'വേദപുസ്തകം',
   'foot.copy': 'സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളി, ജാലഹള്ളി', 'foot.credit': '<em>സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളിയിലെ</em> അംഗങ്ങൾ ആശയം രൂപപ്പെടുത്തി, രൂപകൽപ്പന ചെയ്ത്, വികസിപ്പിച്ചത്.', 'foot.privacy': 'സ്വകാര്യത', 'foot.terms': 'നിബന്ധനകൾ',
@@ -2313,7 +2313,7 @@ var ML = {
 /* added with the v2 design */
 (function (o) { for (var k in o) ML[k] = o[k]; })({
   'dock.home': 'ഹോം', 'dock.times': 'സമയം', 'dock.menu': 'മെനു', 'nav.more': 'കൂടുതൽ',
-  'lord.v1': 'അവൻ <em>സർവ്വത്തിന്നും മുമ്പെയുള്ളവൻ;</em>', 'lord.v2': 'സകലത്തിന്നും അവനിൽ ആധാരമായിരിക്കുന്നു.', 'lord.v3': 'അവൻ സഭ എന്ന ശരീരത്തിന്റെ', 'lord.v4': '<em>തല</em>യും ആകുന്നു.', 'lord.ref': 'കൊലൊസ്സ്യർ 1:17–18',
+  'lord.v1': 'അവൻ <em>സർവ്വത്തിന്നും മുമ്പെയുള്ളവൻ;</em>', 'lord.v2': 'അവൻ സകലത്തിനും ആധാരമായിരിക്കുന്നു.', 'lord.v3': 'അവൻ സഭ എന്ന ശരീരത്തിന്റെ', 'lord.v4': '<em>തല</em>യും ആകുന്നു.', 'lord.ref': 'കൊലൊസ്സ്യർ 1:17–18',
   'ctag': '1966 മുതൽ',
   'stat.1': 'ദൈവമാതാവിന്റെ വാങ്ങിപ്പു പെരുന്നാളിൽ അടിസ്ഥാന ശില സ്ഥാപിച്ചു',
   'stat.2': 'പുതുക്കിപ്പണിത വലിയ ദേവാലയം കൂദാശ ചെയ്തു',
