@@ -1651,6 +1651,20 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
 /* loader: the same dome */
 .curtain img{width:auto; height:min(120px,22vw)}
 .tl-p2{display:block; margin-top:.8em}
+/* navbar: tighter links on narrower computer screens, so the longer labels fit */
+@media (max-width:1360px) and (min-width:1081px){ .links{gap:0} .links a{padding:0 9px; font-size:.84rem} .nav-in{gap:16px} .nav-login{padding-left:16px; padding-right:18px} }
+@media (max-width:1200px) and (min-width:1081px){ .links a{padding:0 7px; font-size:.8rem} html[lang="ml"] .links a{font-size:.76rem} }
+@media (max-width:860px){ html[lang="ml"] .hh-title{font-size:clamp(2rem,9.4vw,3rem)} }
+/* hero buttons (computers and tablets): always one row; type and padding scale with the column so both labels fit */
+@media (min-width:761px){
+  .hs-acts{display:flex; flex-wrap:nowrap; gap:10px}
+  html .hs-acts .hs-b{flex:1 1 auto; width:auto; min-width:0; gap:.75em; padding:0 1.35em; font-size:var(--hb-fs,.98rem); white-space:nowrap}
+  .hs-acts .hs-b .ar,.hs-acts .hs-b .ar svg{width:1.1em; height:1.1em}
+}
+.hs-b > span:first-child{white-space:nowrap}
+/* hero: "Visit" instead of "Plan your visit" on computers, so the two buttons sit comfortably in one row */
+.hb-short{display:none}
+@media (min-width:1001px){ .hs-acts .hb-long{display:none} .hs-acts .hb-short{display:inline} }
 @media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; scroll-behavior:auto !important} }
 </style>
 </head>
@@ -1700,7 +1714,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
       <li><a href="#life" data-i18n="nav.life">Organizations</a></li>
       <li><a href="#gallery" data-i18n="gal.kicker">Gallery</a></li>
       <li><a href="https://smovp.churchgovern.com" target="_blank" rel="noopener" data-i18n="nav.live">Parish Information Centre</a></li>
-      <li><a href="#history" data-i18n="nav.history">History</a></li>
+      <li><a href="#history" data-i18n="nav.history">Historical Milestones</a></li>
       <li><a href="#visit" data-i18n="nav.visit">Visit</a></li>
       <li class="bar" aria-hidden="true"></li>
     </ul></nav>
@@ -1719,7 +1733,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
   <a href="#top" data-dock="home"><svg><use href="#i-home"/></svg><span data-i18n="dock.home">Home</span></a>
   <a href="#visit" data-dock="visit"><svg><use href="#i-clock"/></svg><span data-i18n="dock.times">Times</span></a>
   <a href="#gallery" data-dock="gallery"><svg><use href="#i-img"/></svg><span data-i18n="gal.kicker">Gallery</span></a>
-  <a href="#history" data-dock="history"><svg><use href="#i-book"/></svg><span data-i18n="nav.history">History</span></a>
+  <a href="#history" data-dock="history"><svg><use href="#i-book"/></svg><span data-i18n="nav.history">Historical Milestones</span></a>
   <button type="button" data-dock="menu" id="dockMenu" aria-controls="sheet" aria-expanded="false"><svg><use href="#i-menu"/></svg><span data-i18n="dock.menu">Menu</span></button>
 </nav>
 
@@ -1734,7 +1748,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
       <li><a href="#life" style="--i:1"><small>02</small><span data-i18n="nav.life">Organizations</span><svg class="go ico"><use href="#arr"/></svg></a></li>
       <li><a href="#gallery" style="--i:2"><small>03</small><span data-i18n="gal.kicker">Gallery</span><svg class="go ico"><use href="#arr"/></svg></a></li>
       <li><a href="https://smovp.churchgovern.com" target="_blank" rel="noopener" style="--i:3"><small>04</small><span data-i18n="nav.live">Parish Information Centre</span><svg class="go ico"><use href="#arr"/></svg></a></li>
-      <li><a href="#history" style="--i:4"><small>05</small><span data-i18n="nav.history">History</span><svg class="go ico"><use href="#arr"/></svg></a></li>
+      <li><a href="#history" style="--i:4"><small>05</small><span data-i18n="nav.history">Historical Milestones</span><svg class="go ico"><use href="#arr"/></svg></a></li>
       <li><a href="#visit" style="--i:5"><small>06</small><span data-i18n="nav.visit">Visit</span><svg class="go ico"><use href="#arr"/></svg></a></li>
     </ul>
     <div class="sh-foot">
@@ -1785,8 +1799,8 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
             <p class="hs-place mono-l hero-fade" style="--d:.95s"><span data-i18n="hero.place">Jalahalli, Bengaluru</span></p>
           </div>
           <div class="hs-acts">
-            <a class="btn btn-ink hs-b hero-fade" style="--d:1.05s" href="#visit"><span data-i18n="hero.cta1">Plan your visit</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
-            <a class="btn btn-line hs-b hs-hist hero-fade" style="--d:1.15s" href="#history"><span data-i18n="welcome.history">Our history</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
+            <a class="btn btn-ink hs-b hero-fade" style="--d:1.05s" href="#visit"><span class="hb-long" data-i18n="hero.cta1">Plan your visit</span><span class="hb-short" data-i18n="nav.visit">Visit</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
+            <a class="btn btn-line hs-b hs-hist hero-fade" style="--d:1.15s" href="#history"><span data-i18n="welcome.history">Historical Milestones</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
             <a class="btn btn-line hs-b hs-login hero-fade" style="--d:1.15s" href="https://churchgovern.app/member/login" target="_blank" rel="noopener"><span data-i18n="nav.login">Member login</span> <svg class="ico"><use href="#user"/></svg></a>
           </div>
         </div>
@@ -1831,7 +1845,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
           <p class="body rv" style="--d:.08s" data-i18n="welcome.body">For generations, St. Mary's Orthodox Valiyapally has been a home of prayer, faith, and fellowship in Jalahalli. Since 1966, we have walked together in the light of Christ, preserving the sacred traditions and apostolic faith entrusted to us through St. Thomas the Apostle.</p>
           <div class="acts rv" style="--d:.16s">
             <a class="btn btn-ink" href="#visit"><span data-i18n="nav.times">Service times</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
-            <a class="link" href="#history"><span data-i18n="welcome.history">Our history</span> <svg><use href="#arr"/></svg></a>
+            <a class="link" href="#history"><span data-i18n="welcome.history">Historical Milestones</span> <svg><use href="#arr"/></svg></a>
           </div>
         </div>
         <div class="composition">
@@ -1986,7 +2000,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
     <div class="hh-grid">
       <div class="hh-text">
         <a class="btn btn-line hh-back rv-h" href="#top" style="--d:.2s"><svg class="ico"><use href="#back"/></svg><span data-i18n="hist.back">Back to home</span></a>
-        <h1 class="hh-title"><span class="ln"><span style="--i:0" data-i18n="hist.t1">Our</span></span> <span class="ln"><span style="--i:1" data-i18n="hist.t2">history</span></span></h1>
+        <h1 class="hh-title"><span class="ln"><span style="--i:0" data-i18n="hist.t1">Historical</span></span> <span class="ln"><span style="--i:1" data-i18n="hist.t2">Milestones</span></span></h1>
         <p class="hh-lead rv-h" style="--d:.7s" data-i18n="hist.lead">St. Mary’s Orthodox Valiyapally, Jalahalli, stands as a testament to the faith, dedication, and spiritual heritage of the Malankara Orthodox Syrian Church community in the region. Its history reflects the devotion, perseverance, and collective efforts of generations who nurtured the parish and its spiritual mission.</p>
       </div>
       <!-- @EDIT:PHOTOS banner photo -->
@@ -2193,7 +2207,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
       <a href="#life" data-i18n="nav.life">Organizations</a>
       <a href="#gallery" data-i18n="gal.kicker">Gallery</a>
       <a href="https://smovp.churchgovern.com" target="_blank" rel="noopener" data-i18n="nav.live">Parish Information Centre</a>
-      <a href="#history" data-i18n="foot.history">History</a>
+      <a href="#history" data-i18n="foot.history">Historical Milestones</a>
       <a href="#visit" data-i18n="nav.visit">Visit</a>
       <span class="f-sep" aria-hidden="true"></span>
       <a href="https://www.bangaloreorthodoxdiocese.org/" target="_blank" rel="noopener" data-i18n="facts.diocesev">Bangalore Diocese</a>
@@ -2242,7 +2256,7 @@ var ML = {
   'welcome.quote': '“അവന്റെ വാതിലുകളിൽ സ്തോത്രത്തോടും<br>അവന്റെ പ്രാകാരങ്ങളിൽ സ്തുതിയോടുംകൂടെ വരുവിൻ;<br>അവനു സ്തോത്രം ചെയ്ത് അവന്റെ നാമത്തെ വാഴ്ത്തുവിൻ.”',
   'welcome.cite': 'സങ്കീർത്തനം 100:4',
   'welcome.body': '1966 മുതൽ ജാലഹള്ളിയിൽ വിശ്വാസത്തിന്റെയും പ്രാർത്ഥനയുടെയും സ്നേഹത്തിന്റെയും സാക്ഷ്യമായി സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളി നിലകൊള്ളുന്നു. ക്രിസ്തുവിൽ ഒന്നായി, മാർത്തോമ്മാ ശ്ലീഹായുടെ വിശ്വാസപാരമ്പര്യം മുറുകെപ്പിടിച്ച് ഒരുമയുടെ ചുവടുകളോടെ മുന്നോട്ട്.',
-  'welcome.history': 'ഇടവക ചരിത്രം',
+  'welcome.history': 'ചരിത്ര നാഴികക്കല്ലുകൾ',
   'facts.churchv': 'മലങ്കര ഓർത്തഡോക്സ് സുറിയാനി സഭ', 'facts.diocesev': 'ബാംഗ്ലൂർ ഭദ്രാസനം',
 
 
@@ -2291,15 +2305,15 @@ var ML = {
   'visit.o': 'ഇടവക ഓഫീസ്', 'visit.ov': 'ഞായർ, തിങ്കൾ, ശനി · രാവിലെ 8:00 മുതൽ 12:00 വരെ',
   'visit.times': 'ആരാധനാ സമയങ്ങൾ', 'visit.daily': 'ദിവസവും', 'visit.sun': 'ഞായർ', 'visit.tuesun': 'ചൊവ്വ – ഞായർ', 'visit.open': 'ഓഫീസ് സമയം', 'visit.mon': 'തിങ്കൾ', 'visit.closed': 'അവധി', 'visit.sat': 'ശനി', 'visit.sq': 'ഞായർ · വിശുദ്ധ കുർബാന', 'visit.saq': 'ശനി · വിശുദ്ധ കുർബാന', 'visit.mp': 'പ്രഭാത / സന്ധ്യാ പ്രാർത്ഥന', 'visit.ad': 'വിലാസം', 'visit.ph': 'ഫോൺ',
   'visit.m': 'ഇമെയിൽ', 'visit.follow': 'ഇടവകയെ പിന്തുടരുക', 'visit.dir': 'Get Directions', 'visit.copy': 'ഇമെയിൽ പകർത്തുക', 'visit.copied': 'ഇമെയിൽ വിലാസം പകർത്തി',
-  'foot.parish': 'ഇടവക', 'foot.aboutus': 'ഞങ്ങളെക്കുറിച്ച്', 'foot.history': 'ഇടവക ചരിത്രം', 'nav.history': 'ചരിത്രം', 'foot.vicar': 'വികാരിയും ഭാരവാഹികളും',
+  'foot.parish': 'ഇടവക', 'foot.aboutus': 'ഞങ്ങളെക്കുറിച്ച്', 'foot.history': 'ചരിത്ര നാഴികക്കല്ലുകൾ', 'nav.history': 'ചരിത്ര നാഴികക്കല്ലുകൾ', 'foot.vicar': 'വികാരിയും ഭാരവാഹികളും',
   'foot.media': 'വാർത്തകളും മാധ്യമങ്ങളും', 'foot.news': 'വാർത്തകൾ', 'foot.events': 'പരിപാടികൾ',
   'foot.church': 'വിശാല സഭ', 'foot.bible': 'വേദപുസ്തകം',
   'foot.copy': 'സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളി, ജാലഹള്ളി', 'foot.credit': '<em>സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളിയിലെ</em> അംഗങ്ങൾ ആശയം രൂപപ്പെടുത്തി, രൂപകൽപ്പന ചെയ്ത്, വികസിപ്പിച്ചത്.', 'foot.privacy': 'സ്വകാര്യത', 'foot.terms': 'നിബന്ധനകൾ',
   'lb.close': 'അടയ്ക്കുക', 'lb.prev': 'മുമ്പത്തേത്', 'lb.next': 'അടുത്തത്',
   /* history view */
   'hist.back': 'ഹോമിലേക്ക്',
-  'hist.t1': 'ഇടവക',
-  'hist.t2': 'ചരിത്രം',
+  'hist.t1': 'ചരിത്ര',
+  'hist.t2': 'നാഴികക്കല്ലുകൾ', 'hist.bless': 'ജാലഹള്ളിയുടെ മണ്ണിൽ വിശ്വാസത്തിന്റെയും പ്രാർത്ഥനയുടെയും അനുഗ്രഹസാന്നിധ്യമായി ഈ ദേവാലയം നിലകൊള്ളുന്നു. പരിശുദ്ധ അമ്മയുടെ മാധ്യസ്ഥ്യം ഏവർക്കും എന്നും അഭയവും അനുഗ്രഹവുമായി മാറട്ടെ.',
   'hist.lead': 'ജാലഹള്ളി സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളി, ഈ പ്രദേശത്തെ മലങ്കര ഓർത്തഡോക്സ് സുറിയാനി സഭാ സമൂഹത്തിന്റെ വിശ്വാസത്തിനും സമർപ്പണത്തിനും ആത്മീയ പൈതൃകത്തിനും സാക്ഷ്യമായി നിലകൊള്ളുന്നു. ഇടവകയെയും അതിന്റെ ആത്മീയ ദൗത്യത്തെയും പരിപോഷിപ്പിച്ച തലമുറകളുടെ ഭക്തിയും സ്ഥിരോത്സാഹവും കൂട്ടായ പരിശ്രമവും ഈ ചരിത്രത്തിൽ പ്രതിഫലിക്കുന്നു.',
   'hist.jump': 'വർഷം',
   'hist.today.k': 'ഇന്നത്തെ ഇടവക',
@@ -2778,6 +2792,21 @@ var ML = {
     trio.addEventListener('pointerdown', function () { touched = true; }, { passive: true });
     saints.forEach(function (n) { n.addEventListener('click', function () { if (isMob && !n.classList.contains('cur')) { touched = true; trio.scrollTo({ left: n.offsetLeft + n.offsetWidth / 2 - trio.clientWidth / 2, behavior: motion ? 'smooth' : 'auto' }); } }); });
     addEventListener('resize', centre); addEventListener('load', centre); centre();
+  })();
+  // hero buttons on larger screens: one row; the type steps down until both labels fit
+  (function () {
+    var acts = $('.hs-acts'); if (!acts) return; var q = 0;
+    function fit() {
+      q = 0; var bs = $$('.hs-b', acts).filter(function (b) { return b.offsetParent; });
+      if (innerWidth < 761) { acts.style.removeProperty('--hb-fs'); return; }
+      var fs = 15.7; acts.style.setProperty('--hb-fs', fs + 'px');
+      while (fs > 10.5 && bs.some(function (b) { return b.scrollWidth > b.clientWidth + 1; })) { fs -= .25; acts.style.setProperty('--hb-fs', fs + 'px'); }
+    }
+    function later() { if (!q) q = requestAnimationFrame(fit); }
+    addEventListener('resize', later); addEventListener('load', fit);
+    new MutationObserver(later).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    fit();
   })();
   function setHj(o) { hj.classList.toggle('open', o); hjNow.setAttribute('aria-expanded', String(o)); }
   hjNow.addEventListener('click', function () { setHj(!hj.classList.contains('open')); buzz(6); });
