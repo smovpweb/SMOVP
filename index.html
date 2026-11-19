@@ -1655,16 +1655,6 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
 @media (max-width:1360px) and (min-width:1081px){ .links{gap:0} .links a{padding:0 9px; font-size:.84rem} .nav-in{gap:16px} .nav-login{padding-left:16px; padding-right:18px} }
 @media (max-width:1200px) and (min-width:1081px){ .links a{padding:0 7px; font-size:.8rem} html[lang="ml"] .links a{font-size:.76rem} }
 @media (max-width:860px){ html[lang="ml"] .hh-title{font-size:clamp(2rem,9.4vw,3rem)} }
-/* hero buttons (computers and tablets): always one row; type and padding scale with the column so both labels fit */
-@media (min-width:761px){
-  .hs-acts{display:flex; flex-wrap:nowrap; gap:10px}
-  html .hs-acts .hs-b{flex:1 1 auto; width:auto; min-width:0; gap:.75em; padding:0 1.35em; font-size:var(--hb-fs,.98rem); white-space:nowrap}
-  .hs-acts .hs-b .ar,.hs-acts .hs-b .ar svg{width:1.1em; height:1.1em}
-}
-.hs-b > span:first-child{white-space:nowrap}
-/* hero: "Visit" instead of "Plan your visit" on computers, so the two buttons sit comfortably in one row */
-.hb-short{display:none}
-@media (min-width:1001px){ .hs-acts .hb-long{display:none} .hs-acts .hb-short{display:inline} }
 @media (prefers-reduced-motion: reduce){ *,*::before,*::after{animation-duration:.001s !important; animation-iteration-count:1 !important; transition-duration:.001s !important; scroll-behavior:auto !important} }
 </style>
 </head>
@@ -1799,8 +1789,8 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
             <p class="hs-place mono-l hero-fade" style="--d:.95s"><span data-i18n="hero.place">Jalahalli, Bengaluru</span></p>
           </div>
           <div class="hs-acts">
-            <a class="btn btn-ink hs-b hero-fade" style="--d:1.05s" href="#visit"><span class="hb-long" data-i18n="hero.cta1">Plan your visit</span><span class="hb-short" data-i18n="nav.visit">Visit</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
-            <a class="btn btn-line hs-b hs-hist hero-fade" style="--d:1.15s" href="#history"><span data-i18n="welcome.history">Historical Milestones</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
+            <a class="btn btn-ink hs-b hero-fade" style="--d:1.05s" href="#visit"><span data-i18n="hero.cta1">Plan your visit</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
+            <a class="btn btn-line hs-b hs-hist hero-fade" style="--d:1.15s" href="#history"><span data-i18n="welcome.history">Our history</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
             <a class="btn btn-line hs-b hs-login hero-fade" style="--d:1.15s" href="https://churchgovern.app/member/login" target="_blank" rel="noopener"><span data-i18n="nav.login">Member login</span> <svg class="ico"><use href="#user"/></svg></a>
           </div>
         </div>
@@ -1845,7 +1835,7 @@ html[lang="ml"] .gs-hint{font-family:var(--ml); letter-spacing:0; text-transform
           <p class="body rv" style="--d:.08s" data-i18n="welcome.body">For generations, St. Mary's Orthodox Valiyapally has been a home of prayer, faith, and fellowship in Jalahalli. Since 1966, we have walked together in the light of Christ, preserving the sacred traditions and apostolic faith entrusted to us through St. Thomas the Apostle.</p>
           <div class="acts rv" style="--d:.16s">
             <a class="btn btn-ink" href="#visit"><span data-i18n="nav.times">Service times</span> <span class="ar"><svg><use href="#arr"/></svg><svg><use href="#arr"/></svg></span></a>
-            <a class="link" href="#history"><span data-i18n="welcome.history">Historical Milestones</span> <svg><use href="#arr"/></svg></a>
+            <a class="link" href="#history"><span data-i18n="welcome.history">Our history</span> <svg><use href="#arr"/></svg></a>
           </div>
         </div>
         <div class="composition">
@@ -2256,7 +2246,7 @@ var ML = {
   'welcome.quote': '“അവന്റെ വാതിലുകളിൽ സ്തോത്രത്തോടും<br>അവന്റെ പ്രാകാരങ്ങളിൽ സ്തുതിയോടുംകൂടെ വരുവിൻ;<br>അവനു സ്തോത്രം ചെയ്ത് അവന്റെ നാമത്തെ വാഴ്ത്തുവിൻ.”',
   'welcome.cite': 'സങ്കീർത്തനം 100:4',
   'welcome.body': '1966 മുതൽ ജാലഹള്ളിയിൽ വിശ്വാസത്തിന്റെയും പ്രാർത്ഥനയുടെയും സ്നേഹത്തിന്റെയും സാക്ഷ്യമായി സെന്റ് മേരീസ് ഓർത്തഡോക്സ് വലിയപള്ളി നിലകൊള്ളുന്നു. ക്രിസ്തുവിൽ ഒന്നായി, മാർത്തോമ്മാ ശ്ലീഹായുടെ വിശ്വാസപാരമ്പര്യം മുറുകെപ്പിടിച്ച് ഒരുമയുടെ ചുവടുകളോടെ മുന്നോട്ട്.',
-  'welcome.history': 'ചരിത്ര നാഴികക്കല്ലുകൾ',
+  'welcome.history': 'ഇടവക ചരിത്രം',
   'facts.churchv': 'മലങ്കര ഓർത്തഡോക്സ് സുറിയാനി സഭ', 'facts.diocesev': 'ബാംഗ്ലൂർ ഭദ്രാസനം',
 
 
@@ -2792,21 +2782,6 @@ var ML = {
     trio.addEventListener('pointerdown', function () { touched = true; }, { passive: true });
     saints.forEach(function (n) { n.addEventListener('click', function () { if (isMob && !n.classList.contains('cur')) { touched = true; trio.scrollTo({ left: n.offsetLeft + n.offsetWidth / 2 - trio.clientWidth / 2, behavior: motion ? 'smooth' : 'auto' }); } }); });
     addEventListener('resize', centre); addEventListener('load', centre); centre();
-  })();
-  // hero buttons on larger screens: one row; the type steps down until both labels fit
-  (function () {
-    var acts = $('.hs-acts'); if (!acts) return; var q = 0;
-    function fit() {
-      q = 0; var bs = $$('.hs-b', acts).filter(function (b) { return b.offsetParent; });
-      if (innerWidth < 761) { acts.style.removeProperty('--hb-fs'); return; }
-      var fs = 15.7; acts.style.setProperty('--hb-fs', fs + 'px');
-      while (fs > 10.5 && bs.some(function (b) { return b.scrollWidth > b.clientWidth + 1; })) { fs -= .25; acts.style.setProperty('--hb-fs', fs + 'px'); }
-    }
-    function later() { if (!q) q = requestAnimationFrame(fit); }
-    addEventListener('resize', later); addEventListener('load', fit);
-    new MutationObserver(later).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
-    fit();
   })();
   function setHj(o) { hj.classList.toggle('open', o); hjNow.setAttribute('aria-expanded', String(o)); }
   hjNow.addEventListener('click', function () { setHj(!hj.classList.contains('open')); buzz(6); });
